@@ -1,4 +1,5 @@
 #Open active google-chrome window or open chrome
+#todo change "sleep 0.3" to "wait till window is active"
 pid=$(pgrep ${1} | head -n 1)
 if [ -z "$pid" ]
 then
@@ -18,7 +19,8 @@ if [ -z "$wid" ]; then
 fi
 xdotool windowactivate $wid
 if [ $1 = "chrome" ]; then
-   xdotool key "alt+d"
+   sleep 0.3s
+   xdotool key "alt+d" --window $wid
 fi
 exit 3
 
